@@ -16,8 +16,8 @@ import lombok.Setter;
  * @author root
  */
 @Embeddable
-public class NumeroRegistre implements Serializable {
+public class CodeOfficier implements Serializable {
     @Getter @Setter
-    @Column(name = "numero_registre")
-    long numeroRegistre;
+    @Column(name = "code_officier")
+    long codeOfficier;
 }

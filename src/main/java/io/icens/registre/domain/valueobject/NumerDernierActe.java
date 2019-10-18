@@ -8,6 +8,8 @@ package io.icens.registre.domain.valueobject;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -15,6 +17,7 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class NumerDernierActe implements Serializable {
+    @Getter @Setter
     @Column(name = "numero_dernier_acte")
     long numerDernierActe;
 }

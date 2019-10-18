@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -16,7 +18,7 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class AnneeRegistre implements Serializable {
-    
+    @Getter @Setter
     @Column(name = "annee_registre")
     LocalDateTime anneeRegistre;
 }

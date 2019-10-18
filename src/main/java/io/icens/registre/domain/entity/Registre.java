@@ -11,7 +11,10 @@ import io.icens.registre.domain.valueobject.NumerDernierActe;
 import io.icens.registre.domain.valueobject.NumeroPremierActe;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -21,16 +24,26 @@ import javax.persistence.Table;
 @Entity
 public class Registre extends BaseEntity{
     
+    @Getter @Setter
     @Embedded
     AnneeRegistre anneeRegistre;
     
+    @Getter @Setter
     @Embedded
     NombreActe nombreActe;
     
+    @Getter @Setter
     @Embedded
     NumeroPremierActe numeroPremierActe;
     
+    @Getter @Setter
     @Embedded
     NumerDernierActe numerDernierActe;
+    
+    @Getter @Setter
+    String officierUuid;
+    
+    @Getter @Setter
+    String tribunalUuid;
    
 }
