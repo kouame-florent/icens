@@ -11,9 +11,11 @@ package io.icens.registre.domain.valueobject;
  */
 public enum StatutRegistre {
     
+    
     PROJET("Projet"),
-    VALIDE("Validé"),
-    ANNULE("Annulé");
+    VALIDE("Valide"),
+    ANNULE("Annulé"),
+    CLOTURE("Cloturé");
     
     private final String statut;
     

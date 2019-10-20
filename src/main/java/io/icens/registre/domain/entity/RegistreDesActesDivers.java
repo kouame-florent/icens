@@ -15,12 +15,12 @@ import javax.persistence.NamedQuery;
  */
 @NamedQueries({
     @NamedQuery(
-        name = "RegistreDeMariage.findByReference",
-        query = "SELECT r FROM RegistreDeMariage r WHERE r.reference = :reference"
+        name = "RegistreDesActesDivers.findByReference",
+        query = "SELECT r FROM RegistreDesActesDivers r WHERE r.reference = :reference"
     ),
    
 })
 @Entity
-public class RegistreDeMariage extends Registre{
+public class RegistreDesActesDivers  extends Registre{
     
 }

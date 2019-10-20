@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.registre.domain.entity;
+package io.icens.registre.repository;
 
-import javax.persistence.Entity;
+import io.icens.registre.domain.entity.RegistreDesActesDivers;
 
 /**
  *
  * @author root
  */
-@Entity
-public class RegsitreActeDivers  extends BaseEntity{
+public interface RegistreDesActesDiversDAO extends GenericDAO<RegistreDesActesDivers, String>{
     
 }
