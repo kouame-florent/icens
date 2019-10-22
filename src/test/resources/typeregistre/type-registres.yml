@@ -1,0 +1,5 @@
+IC_TYPE_REGISTRE:
+  - uuid: b97d6945-18ee-44a7-aec1-0017cf077c52
+    libelle: "Registre de naissance"
+    nombre_de_feuillets: 50
+    version: 0

@@ -10,8 +10,7 @@ package io.icens.registre.domain.valueobject;
  * @author root
  */
 public enum StatutRegistre {
-    
-    
+        
     PROJET("Projet"),
     VALIDE("Valide"),
     ANNULE("Annulé"),

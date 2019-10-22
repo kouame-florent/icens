@@ -6,11 +6,13 @@
 package io.icens.registre.repository;
 
 import io.icens.registre.domain.entity.Registre;
+import io.icens.registre.domain.valueobject.ReferenceRegistre;
+import java.util.Optional;
 
 /**
  *
  * @author root
  */
 public interface RegistreDAO extends GenericDAO<Registre, String>{
-    
+    Optional<Registre> findByReference(ReferenceRegistre reference);
 }

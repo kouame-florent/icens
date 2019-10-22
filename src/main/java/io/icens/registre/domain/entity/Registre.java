@@ -16,7 +16,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -44,11 +43,12 @@ import org.hibernate.validator.constraints.SafeHtml;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "IC_REGISTRE",uniqueConstraints =  
       @UniqueConstraint(name = "UNQ_COMMUNE_CENTRE_ANNEE_NUMERO",
-              columnNames = {"commune_uuid","centre_uuid","annee","numero","DTYPE"}
+              columnNames = {"centre_uuid","annee","numero","typeRegistre_uuid"}
 ))
 @Entity
 public class Registre extends BaseEntity{
     
+    @NotNull
     @Getter @Setter
     @Embedded
     @Valid
@@ -66,12 +66,7 @@ public class Registre extends BaseEntity{
     @Column(name = "numero_dernier_acte")
     @Getter @Setter
     long numeroDernierActe;
-    
-    @Column(name = "nombre_feuillets")
-    @Getter @Setter
-    @Positive
-    int nombreDeFeuillets;
-    
+        
     @NotNull
     @Column(name = "date_ouverture")
     @Getter @Setter
@@ -113,9 +108,12 @@ public class Registre extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private StatutRegistre statut;
     
-    @Getter @Setter
-    @Valid
-    @ManyToOne
-    private TypeRegistre typeRegistre;
-   
+    public Registre(ReferenceRegistre reference) {
+        this.reference = reference;
+    }
+
+    public Registre() {
+       
+    }
+       
 }
