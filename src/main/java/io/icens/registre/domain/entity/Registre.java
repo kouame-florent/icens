@@ -38,16 +38,23 @@ import org.hibernate.validator.constraints.SafeHtml;
         name = "Registre.findByReference",
         query = "SELECT r FROM Registre r WHERE r.reference = :reference"
     ),
+    @NamedQuery(
+        name = "Registre.findByRefCommuneCentreAnneeType",
+        query = "SELECT r FROM Registre r WHERE r.reference.communeUuid = :communeUuid "
+                + " AND r.reference.centreUuid = :centreUuid "
+                + " AND r.reference.annee = :annee "
+                + " AND r.reference.typeRegistre = :typeRegistre"
+    ),
    
 })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "IC_REGISTRE",uniqueConstraints =  
       @UniqueConstraint(name = "UNQ_COMMUNE_CENTRE_ANNEE_NUMERO",
-              columnNames = {"centre_uuid","annee","numero","typeRegistre_uuid"}
+              columnNames = {"commune_uuid","centre_uuid","annee","numero","type_registre"}
 ))
 @Entity
 public class Registre extends BaseEntity{
-    
+        
     @NotNull
     @Getter @Setter
     @Embedded
@@ -57,20 +64,24 @@ public class Registre extends BaseEntity{
     @Column(name = "nombre_actes")
     @Getter @Setter
     @Positive
-    long nombreActes;
+    private int nombreActes;
     
     @Column(name = "numero_premier_acte")
     @Getter @Setter
-    long numeroPremierActe;
+    private int numeroPremierActe;
     
     @Column(name = "numero_dernier_acte")
     @Getter @Setter
-    long numeroDernierActe;
+    private int numeroDernierActe;
+    
+//    @Column(name = "nombre_feuillets")
+//    @Getter @Setter
+//    private int nombreFeuillets;
         
     @NotNull
     @Column(name = "date_ouverture")
     @Getter @Setter
-    private LocalDateTime dateOuverture;
+    private LocalDateTime dateOuverture = LocalDateTime.now();
     
     @Column(name = "date_validation")
     @Getter @Setter
@@ -80,7 +91,7 @@ public class Registre extends BaseEntity{
     @Getter @Setter
     @Size(min = 0,max = 1000)
     @SafeHtml
-    private String observation;
+    private String observation = "";
     
     @Column(name = "mention")
     @Getter @Setter
@@ -106,10 +117,11 @@ public class Registre extends BaseEntity{
     
     @Getter @Setter
     @Enumerated(EnumType.STRING)
-    private StatutRegistre statut;
+    private StatutRegistre statut = StatutRegistre.PROJET;
     
     public Registre(ReferenceRegistre reference) {
         this.reference = reference;
+        
     }
 
     public Registre() {

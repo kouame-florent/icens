@@ -5,17 +5,16 @@
  */
 package io.icens.registre.domain.valueobject;
 
-import io.icens.registre.domain.entity.TypeRegistre;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,39 +27,43 @@ public class ReferenceRegistre implements Serializable{
     
     @NotNull
     @Getter @Setter
-    @Valid
-    @ManyToOne
+    @Column(name = "type_registre")
+    @Enumerated(EnumType.STRING)
     private TypeRegistre typeRegistre;
     
+    @Getter @Setter
     @Column(name = "commune_uuid")
     @NotBlank
-    String communeUuid;
+    private String communeUuid;
      
+    @Getter @Setter
     @Column(name = "centre_uuid")
     @NotBlank
-    String centreUuid;
+    private String centreUuid;
     
     @Column(name = "annee")
     @Getter @Setter
     @Min(1900) @Max(2100)
-    int annee;
+    private int annee;
     
     @Getter @Setter
     @Column(name = "numero")
-    @Positive
-    long numero;
+    private int numero;
 
     public ReferenceRegistre() {
     }
-    
-    
-    
-    public ReferenceRegistre(TypeRegistre typeRegistre,String centreUuid, int annee, long numero) {
+
+    public ReferenceRegistre(String communeUuid, 
+            String centreUuid, int annee, int numero,TypeRegistre typeRegistre) {
         this.typeRegistre = typeRegistre;
+        this.communeUuid = communeUuid;
         this.centreUuid = centreUuid;
         this.annee = annee;
         this.numero = numero;
     }
+    
+    
+   
     
     
 }

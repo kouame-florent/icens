@@ -7,6 +7,7 @@ package io.icens.registre.repository;
 
 import io.icens.registre.domain.entity.Registre;
 import io.icens.registre.domain.valueobject.ReferenceRegistre;
+import io.icens.registre.domain.valueobject.TypeRegistre;
 import java.util.List;
 import java.util.Optional;
 import javax.ejb.Stateless;
@@ -34,6 +35,21 @@ public class RegistreDAOImpl extends GenericDAOImpl<Registre, String> implements
         }
         
         return Optional.empty();
+    }
+
+    @Override
+    public List<Registre> findByRefCommuneCentreAnneeType(String communeUuid, 
+            String centreUuid, int annee, TypeRegistre typeRegistre) {
+        
+        TypedQuery<Registre> query = 
+                em.createNamedQuery("Registre.findByRefCommuneCentreAnneeType", Registre.class);
+        
+        query.setParameter("communeUuid", communeUuid);
+        query.setParameter("centreUuid", centreUuid);
+        query.setParameter("annee", annee);
+        query.setParameter("typeRegistre", typeRegistre);
+       
+        return query.getResultList();
     }
     
 }

@@ -7,6 +7,8 @@ package io.icens.registre.repository;
 
 import io.icens.registre.domain.entity.Registre;
 import io.icens.registre.domain.valueobject.ReferenceRegistre;
+import io.icens.registre.domain.valueobject.TypeRegistre;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -15,4 +17,5 @@ import java.util.Optional;
  */
 public interface RegistreDAO extends GenericDAO<Registre, String>{
     Optional<Registre> findByReference(ReferenceRegistre reference);
+    List<Registre> findByRefCommuneCentreAnneeType(String communeUuid,String centreUuid,int annee, TypeRegistre typeRegistre);
 }

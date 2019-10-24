@@ -22,7 +22,7 @@ public enum StatutRegistre {
         this.statut = statut;
     }
 
-    public String getStatut() {
+    public String statut() {
         return statut;
     }
     
