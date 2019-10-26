@@ -45,6 +45,22 @@ import org.hibernate.validator.constraints.SafeHtml;
                 + " AND r.reference.annee = :annee "
                 + " AND r.reference.typeRegistre = :typeRegistre"
     ),
+    @NamedQuery(
+        name = "Registre.findByRefCommuneCentreAnneeTypeAndStatut",
+        query = "SELECT r FROM Registre r WHERE r.reference.communeUuid = :communeUuid "
+                + " AND r.reference.centreUuid = :centreUuid "
+                + " AND r.reference.annee = :annee "
+                + " AND r.reference.typeRegistre = :typeRegistre"
+                + " AND r.statutRegistre = :statutRegistre"
+    ),
+    @NamedQuery(
+        name = "Registre.findByRefCommuneCentreAnneeTypeAndStatutInStatuts",
+        query = "SELECT r FROM Registre r WHERE r.reference.communeUuid = :communeUuid "
+                + " AND r.reference.centreUuid = :centreUuid "
+                + " AND r.reference.annee = :annee "
+                + " AND r.reference.typeRegistre = :typeRegistre"
+                + " AND r.statutRegistre IN :statuts"
+    ),
    
 })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -115,9 +131,10 @@ public class Registre extends BaseEntity{
     @NotBlank
     private String tribunalUuid;
     
+    @Column(name = "statut_registre")
     @Getter @Setter
     @Enumerated(EnumType.STRING)
-    private StatutRegistre statut = StatutRegistre.PROJET;
+    private StatutRegistre statutRegistre = StatutRegistre.PROJET;
     
     public Registre(ReferenceRegistre reference) {
         this.reference = reference;

@@ -5,7 +5,6 @@
  */
 package io.icens.acteur.repository;
 
-import io.icens.registre.repository.*;
 import java.util.List;
 import java.util.Optional;
 

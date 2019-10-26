@@ -14,7 +14,7 @@ public enum StatutRegistre {
     PROJET("Projet"),
     VALIDE("Valide"),
     ANNULE("Annulé"),
-    CLOTURE("Cloturé");
+    CLOTURE("Clôturé");
     
     private final String statut;
     

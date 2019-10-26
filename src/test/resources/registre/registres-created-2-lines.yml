@@ -12,7 +12,7 @@ IC_REGISTRE:
     numero_premier_acte: 1
     numero_dernier_acte: 51
     observation: ""
-    statut: PROJET
+    statut_registre: CLOTURE
     version: 0
   - annee: 2020
     commune_uuid: 6dee3d50-90aa-4656-8269-673986d74aae
@@ -27,6 +27,6 @@ IC_REGISTRE:
     numero_premier_acte: 52
     numero_dernier_acte: 102
     observation: ""
-    statut: PROJET
+    statut_registre: PROJET
     version: 0
     

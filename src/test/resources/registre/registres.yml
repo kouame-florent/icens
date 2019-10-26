@@ -13,5 +13,5 @@ IC_REGISTRE:
     numero_premier_acte: 1
     numero_dernier_acte: 51
     observation: ""
-    statut: PROJET
+    statut_registre: CLOTURE
     version: 0
