@@ -1,0 +1,33 @@
+IC_REGISTRE:
+  - uuid: b68bfc47-287a-4087-8925-61357fc2d06b
+    annee: 2020
+    commune_uuid: 6dee3d50-90aa-4656-8269-673986d74aae
+    centre_uuid: 74514a75-7138-4230-9350-ce63b9fa3048
+    tribunal_uuid: d500cbe5-605d-45b4-aecd-9f0b5cd15508
+    officier_uuid: 50e92831-f1f6-4e1b-86d0-13b246d4dca6
+    type_registre: REGISTRE_DE_NAISSANCE
+    date_ouverture: 2019-10-24 15:05:03
+    #date_validation: 2019-10-24 15:05:03
+    nombre_actes: 50
+    numero: 1
+    numero_premier_acte: 1
+    numero_dernier_acte: 51
+    observation: ""
+    statut_registre: CLOTURE
+    version: 0
+  - uuid: 1f38ecd4-e57a-4271-90f1-3de624e1b3ae
+    annee: 2020
+    commune_uuid: 6dee3d50-90aa-4656-8269-673986d74aae
+    centre_uuid: 74514a75-7138-4230-9350-ce63b9fa3048
+    tribunal_uuid: d500cbe5-605d-45b4-aecd-9f0b5cd15508
+    officier_uuid: 50e92831-f1f6-4e1b-86d0-13b246d4dca6
+    type_registre: REGISTRE_DE_NAISSANCE
+    date_ouverture: 2019-10-24 15:05:03
+    #date_validation: 2020-02-01
+    nombre_actes: 50
+    numero: 2
+    numero_premier_acte: 52
+    numero_dernier_acte: 102
+    observation: ""
+    statut_registre: ANNULE
+    version: 0

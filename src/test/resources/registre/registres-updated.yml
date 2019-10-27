@@ -1,4 +1,0 @@
-mx_tenant:
-  - name: HTC
-    description: High Tech Computer Corporation
-    status: ENABLED

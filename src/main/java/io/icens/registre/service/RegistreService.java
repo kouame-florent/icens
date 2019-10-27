@@ -57,8 +57,8 @@ public class RegistreService {
                     .getMessage("exception.RegistreWithStatutsExistException"));
         }
         
-        List<Registre> registresClotures = registreDAO.findByRefCommuneCentreAnneeTypeAndStatut(communeUuid, 
-                centreUuid, annee, typeRegistre, StatutRegistre.CLOTURE);
+        List<Registre> registresClotures = registreDAO.findByRefCommuneCentreAnneeTypeAndStatutInStatuts(communeUuid, 
+                centreUuid, annee, typeRegistre,List.of(StatutRegistre.ANNULE,StatutRegistre.CLOTURE));
         
         int num = generateNumeroRegistre(registresClotures);
         ReferenceRegistre ref = new ReferenceRegistre(communeUuid, centreUuid,annee,num,typeRegistre);
@@ -99,21 +99,21 @@ public class RegistreService {
     }
     
     
-    public void validerRegistre(Registre registre){
+    public void validate(Registre registre){
         if(registre.getStatutRegistre().equals(StatutRegistre.PROJET)){
             registre.setStatutRegistre(StatutRegistre.VALIDE);
             registreDAO.makePersistent(registre);
         }
     }
     
-    public void annuler(Registre registre){
+    public void disable(Registre registre){
         if(registre.getStatutRegistre().equals(StatutRegistre.PROJET)){
             registre.setStatutRegistre(StatutRegistre.ANNULE);
             registreDAO.makePersistent(registre);
         }
     }
     
-    public void cloturer(Registre registre){
+    public void close(Registre registre){
         if(registre.getStatutRegistre().equals(StatutRegistre.VALIDE)){
             registre.setStatutRegistre(StatutRegistre.CLOTURE);
             registreDAO.makePersistent(registre);

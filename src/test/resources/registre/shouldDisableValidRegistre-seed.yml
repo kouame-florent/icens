@@ -1,0 +1,17 @@
+IC_REGISTRE:
+  - uuid: b97d6945-18ee-44a7-aec1-0017cf077c52
+    annee: 2020
+    commune_uuid: 6dee3d50-90aa-4656-8269-673986d74aae
+    centre_uuid: 74514a75-7138-4230-9350-ce63b9fa3048
+    tribunal_uuid: d500cbe5-605d-45b4-aecd-9f0b5cd15508
+    officier_uuid: 50e92831-f1f6-4e1b-86d0-13b246d4dca6
+    type_registre: REGISTRE_DE_NAISSANCE
+    date_ouverture: 2019-10-24 15:05:03
+    date_validation: 2019-10-24 15:05:03
+    nombre_actes: 50
+    numero: 1
+    numero_premier_acte: 1
+    numero_dernier_acte: 51
+    observation: ""
+    statut_registre: VALIDE
+    version: 1

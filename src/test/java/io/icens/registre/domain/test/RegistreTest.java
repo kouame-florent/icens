@@ -16,8 +16,6 @@ import io.icens.registre.service.RegistreService;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -63,7 +61,7 @@ public class RegistreTest {
     RegistreService registreService;
     
     @Test
-    @UsingDataSet(value = {"registre/registres.yml"})    
+    @UsingDataSet(value = {"registre/shouldFindByReference-seed.yml"})    
     public void shouldFindByReference(){
         ReferenceRegistre ref = new ReferenceRegistre( 
                 "6dee3d50-90aa-4656-8269-673986d74aae","74514a75-7138-4230-9350-ce63b9fa3048",
@@ -75,7 +73,7 @@ public class RegistreTest {
     }
     
     @Test
-    @UsingDataSet(value = {"registre/registres.yml"})    
+    @UsingDataSet(value = {"registre/shouldFindRegistreByRefCommuneCentreAnneType-seed.yml"})    
     public void shouldFindRegistreByRefCommuneCentreAnneType(){
         List<Registre> regs = registreDAO.findByRefCommuneCentreAnneeType("6dee3d50-90aa-4656-8269-673986d74aae", 
                 "74514a75-7138-4230-9350-ce63b9fa3048", 
@@ -93,7 +91,7 @@ public class RegistreTest {
     }
     
     @Test
-    @UsingDataSet(value = {"registre/registres.yml"}) 
+    @UsingDataSet(value = {"registre/shouldCreateSubsequentRegistre-seed.yml"}) 
     public void shouldCreateSubsequentRegistre() throws RegistreWithStatutsExistException{
        Registre reg = registreService.newRegistre("6dee3d50-90aa-4656-8269-673986d74aae", 
                 "74514a75-7138-4230-9350-ce63b9fa3048", 2020, TypeRegistre.REGISTRE_DE_NAISSANCE);
@@ -102,7 +100,16 @@ public class RegistreTest {
     }
     
     @Test
-    @UsingDataSet(value = {"registre/registres-projet.yml"}) 
+    @UsingDataSet(value = {"registre/shouldCreateSubsequentRegistreEvenWithRegistreWithStatutAnnule-seed.yml"}) 
+    public void shouldCreateSubsequentRegistreEvenWithRegistreWithStatutAnnule() throws RegistreWithStatutsExistException{
+       Registre reg = registreService.newRegistre("6dee3d50-90aa-4656-8269-673986d74aae", 
+                "74514a75-7138-4230-9350-ce63b9fa3048", 2020, TypeRegistre.REGISTRE_DE_NAISSANCE);
+       
+       Assert.assertTrue(reg.getReference().getNumero() == 3);
+    }
+    
+    @Test
+    @UsingDataSet(value = {"registre/shouldFailToCreateSubsequentRegistre-seed.yml"}) 
     public void shouldFailToCreateSubsequentRegistre(){
         boolean gotExpectedException = false;
         try {
@@ -117,7 +124,7 @@ public class RegistreTest {
     }
     
     @Test
-    @ShouldMatchDataSet(value = {"registre/registres-created.yml"},excludeColumns 
+    @ShouldMatchDataSet(value = {"registre/shouldPersitNewRegistreInEmptyDataBase-final.yml"},excludeColumns 
             = {"uuid,version,created,updated,edited,date_ouverture,date_validation"})
     public void shouldPersitNewRegistreInEmptyDataBase() throws RegistreWithStatutsExistException{
         Registre reg = registreService.newRegistre("6dee3d50-90aa-4656-8269-673986d74aae", 
@@ -132,8 +139,8 @@ public class RegistreTest {
     }
     
     @Test
-    @UsingDataSet(value = {"registre/registres.yml"}) 
-    @ShouldMatchDataSet(value = {"registre/registres-created-2-lines.yml"},
+    @UsingDataSet(value = {"registre/shouldPersitNewRegistreInNotEmptyDB-seed.yml"}) 
+    @ShouldMatchDataSet(value = {"registre/shouldPersitNewRegistreInNotEmptyDB-final.yml"},
             excludeColumns = {"uuid,version,created,updated,edited,date_ouverture,date_validation"})
     public void shouldPersitNewRegistreInNotEmptyDB() throws RegistreWithStatutsExistException{
         Registre reg = registreService.newRegistre("6dee3d50-90aa-4656-8269-673986d74aae", 
@@ -147,15 +154,36 @@ public class RegistreTest {
         
         Assert.assertTrue(oReg.isPresent());
     }
-//    
-//    @Test
-//    @UsingDataSet(value = {"registre/registres.yml"}) 
-//    @ShouldMatchDataSet(value = {"registre/registres-valide.yml"},
-//            excludeColumns = {"uuid,version,created,updated,edited,date_ouverture,date_validation"})
-//    public void shouldValidateProjetRegistre(){
-//        
-//        Optional<Registre> oReg = registreDAO.findById("b97d6945-18ee-44a7-aec1-0017cf077c52");
-//        oReg.ifPresent(r -> r.setStatutRegistre(StatutRegistre.VALIDE));
-//    }
+    
+    @Test
+    @UsingDataSet(value = {"registre/shouldValidateProjetRegistre-seed.yml"}) 
+    @ShouldMatchDataSet(value = {"registre/shouldValidateProjetRegistre-final.yml"},
+            excludeColumns = {"uuid,version,created,updated,edited,date_ouverture,date_validation"})
+    public void shouldValidateProjetRegistre(){
+        
+        Optional<Registre> oReg = registreDAO.findById("b97d6945-18ee-44a7-aec1-0017cf077c52");
+        oReg.ifPresent(r -> r.setStatutRegistre(StatutRegistre.VALIDE));
+    }
+    
+    @Test
+    @UsingDataSet(value = {"registre/shouldDisableValidRegistre-seed.yml"}) 
+    @ShouldMatchDataSet(value = {"registre/shouldDisableValidRegistre-final.yml"},
+            excludeColumns = {"uuid,version,created,updated,edited,date_ouverture,date_validation"})
+    public void shouldDisableValidRegistre(){
+        
+        Optional<Registre> oReg = registreDAO.findById("b97d6945-18ee-44a7-aec1-0017cf077c52");
+        oReg.ifPresent(r -> r.setStatutRegistre(StatutRegistre.ANNULE));
+    }
+    
+    @Test
+    @UsingDataSet(value = {"registre/shouldCloseValidRegistre-seed.yml"}) 
+    @ShouldMatchDataSet(value = {"registre/shouldCloseValidRegistre-final.yml"},
+            excludeColumns = {"uuid,version,created,updated,edited,date_ouverture,date_validation"})
+    public void shouldCloseValidRegistre(){
+        
+        Optional<Registre> oReg = registreDAO.findById("b97d6945-18ee-44a7-aec1-0017cf077c52");
+        oReg.ifPresent(r -> r.setStatutRegistre(StatutRegistre.CLOTURE));
+    }
+    
     
 }
