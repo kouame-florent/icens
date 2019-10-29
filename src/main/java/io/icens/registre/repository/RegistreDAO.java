@@ -17,6 +17,7 @@ import java.util.Optional;
  * @author root
  */
 public interface RegistreDAO extends GenericDAO<Registre, String>{
+    
     Optional<Registre> findByReference(ReferenceRegistre reference);
     List<Registre> findByRefCommuneCentreAnneeType(String communeUuid,String centreUuid,int annee, 
             TypeRegistre typeRegistre);

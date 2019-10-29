@@ -1,0 +1,10 @@
+IC_MOUVEMENT:
+  - agent_uuid: 2c26e69a-6e21-4a1c-a3ce-ceb3f83505db
+    registre_uuid: b97d6945-18ee-44a7-aec1-0017cf077c52
+    date_sortie: 2019-10-24 15:05:03
+    date_retour: "[null]"
+    etat_mouvement_registre: SORTIE
+    objet: Consultation
+    observation: "[null]"
+    
+    

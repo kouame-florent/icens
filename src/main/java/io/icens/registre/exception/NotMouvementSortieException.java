@@ -12,10 +12,14 @@ import javax.ejb.ApplicationException;
  * @author root
  */
 @ApplicationException(rollback=true)
-public class RegistreWithStatutsExistException extends Exception{
-     
-    public RegistreWithStatutsExistException(String message) {
+public class NotMouvementSortieException extends Exception{
+
+    public NotMouvementSortieException() {
+        super("Le mouvement n'est pas un mouvement de sortie.");
+    }
+    
+        
+     public NotMouvementSortieException(String message) {
         super(message);
     }
-  
 }

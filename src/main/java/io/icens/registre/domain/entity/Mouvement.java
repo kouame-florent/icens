@@ -5,9 +5,12 @@
  */
 package io.icens.registre.domain.entity;
 
+import io.icens.registre.domain.valueobject.EtatMouvementRegistre;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -27,32 +30,47 @@ public class Mouvement extends BaseEntity{
     
     @NotNull @Getter @Setter
     @Column(name = "date_sortie")
-    LocalDateTime dateSortie;
+    private LocalDateTime dateSortie;
     
     @Getter @Setter
     @Column(name = "date_retour")
-    LocalDateTime dateRetour;
+    private LocalDateTime dateRetour;
+    
+    @Getter @Setter
+    @Column(name = "etat_mouvement_registre")
+    @Enumerated(EnumType.STRING)
+    private EtatMouvementRegistre etatMouvementRegistre;
     
     @Getter @Setter
     @Column(name = "objet")
     @NotBlank
     @Size(min = 0, max = 500)
-    String objet;
+    private String objet;
     
     @Getter @Setter
     @Column(name = "observation")
-    @NotBlank
     @Size(min = 0, max = 1000)
-    String observation;
+    private String observation;
     
     @Getter @Setter
     @Column(name = "agent_uuid")
     @NotBlank
-    String agentUuid;
+    private String agentUuid;
     
     @Getter @Setter
     @NotNull
     @JoinColumn(name = "registre_uuid")
     @ManyToOne
-    Registre registre;
+    private Registre registre;
+
+    public Mouvement() {
+    }
+
+    public Mouvement(String agentUuid, Registre registre,EtatMouvementRegistre etatMouvementRegistre) {
+        this.etatMouvementRegistre = etatMouvementRegistre;
+        this.agentUuid = agentUuid;
+        this.registre = registre;
+    }
+    
+    
 }

@@ -41,6 +41,9 @@ public class RegistreService {
     @Inject
     MessagesService messagesService;
     
+    public Optional<Registre> findByUuid(String uuid){
+       return registreDAO.findById(uuid);
+    }    
            
     public Optional<Registre> persist(Registre registre){
         return registreDAO.makePersistent(registre);

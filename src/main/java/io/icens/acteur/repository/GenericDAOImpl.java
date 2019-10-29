@@ -57,10 +57,9 @@ public abstract class GenericDAOImpl<E, ID> implements GenericDAO<E, ID>{
     }
     
     @Override
-    public Optional<E> makeTransient(E entity) {
+    public void makeTransient(E entity) {
         em.remove(em.merge(entity));
-        em.flush();
-        return Optional.of(entity);
+        
     }
 
     @Override

@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.registre.domain.test;
+package io.icens.registre.service.test;
 
 
+import io.icens.registre.domain.entity.BaseEntity;
+import io.icens.registre.domain.entity.Mouvement;
 import io.icens.registre.domain.entity.Registre;
 import io.icens.registre.domain.valueobject.ReferenceRegistre;
 import io.icens.registre.domain.valueobject.StatutRegistre;
@@ -33,14 +35,15 @@ import org.junit.runner.RunWith;
  * @author root
  */
 @RunWith(Arquillian.class)
-public class RegistreTest {
+public class RegistreServiceTest {
     
     @Deployment
     public static WebArchive createDeployment() {
         WebArchive war = ShrinkWrap.create(WebArchive.class,
-            RegistreTest.class.getName() + ".war")
+            RegistreServiceTest.class.getName() + ".war")
             .addPackages(true, "io.icens.registre.domain.interfaces")
-            .addPackage("io.icens.registre.domain.entity")
+            .addClasses(Registre.class,BaseEntity.class,Mouvement.class)
+//            .addPackage("io.icens.registre.domain.entity")
             .addPackage("io.icens.registre.domain.valueobject")
             .addPackage("io.icens.registre.repository")
             .addPackage("io.icens.registre.service")
@@ -93,10 +96,10 @@ public class RegistreTest {
     @Test
     @UsingDataSet(value = {"registre/shouldCreateSubsequentRegistre-seed.yml"}) 
     public void shouldCreateSubsequentRegistre() throws RegistreWithStatutsExistException{
-       Registre reg = registreService.newRegistre("6dee3d50-90aa-4656-8269-673986d74aae", 
+        Registre reg = registreService.newRegistre("6dee3d50-90aa-4656-8269-673986d74aae", 
                 "74514a75-7138-4230-9350-ce63b9fa3048", 2020, TypeRegistre.REGISTRE_DE_NAISSANCE);
        
-       Assert.assertTrue(reg.getReference().getNumero() == 2);
+        Assert.assertTrue(reg.getReference().getNumero() == 2);
     }
     
     @Test
@@ -180,7 +183,6 @@ public class RegistreTest {
     @ShouldMatchDataSet(value = {"registre/shouldCloseValidRegistre-final.yml"},
             excludeColumns = {"uuid,version,created,updated,edited,date_ouverture,date_validation"})
     public void shouldCloseValidRegistre(){
-        
         Optional<Registre> oReg = registreDAO.findById("b97d6945-18ee-44a7-aec1-0017cf077c52");
         oReg.ifPresent(r -> r.setStatutRegistre(StatutRegistre.CLOTURE));
     }
