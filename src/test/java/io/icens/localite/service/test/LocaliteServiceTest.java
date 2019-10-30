@@ -11,12 +11,9 @@ import io.icens.localite.exception.NotRequiredLocaliteException;
 import io.icens.localite.service.LocaliteService;
 import java.io.File;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.arquillian.persistence.ShouldMatchDataSet;
 import org.jboss.arquillian.persistence.UsingDataSet;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
@@ -77,18 +74,21 @@ public class LocaliteServiceTest {
             throw  new RuntimeException(ex);
         }
     }
-//    @Test
-//    public void shouldThrowNotRequiredLocalException() {
-//         boolean gotExpectedException = false;
-//         Localite loc = localiteService.findByUuid("39a7f8b6-9a26-408c-95e9-3755a86844d0").get();
-//        try {
-//            localiteService.newCommune("Daloa", loc);
-//           
-//        } catch (NotRequiredLocaliteException ex) {
-//            gotExpectedException = true;
-//        }
-//        
-//         Assert.assertTrue("La localité n'est pas un département.",gotExpectedException);
-//   
-//    }
+    
+    
+    @Test
+    @UsingDataSet(value = {"localite/shouldThrowNotRequiredLocalException-seed.yml"})  
+    public void shouldThrowNotRequiredLocalException() {
+         boolean gotExpectedException = false;
+         Localite loc = localiteService.findByUuid("39a7f8b6-9a26-408c-95e9-3755a86844d0").get();
+        try {
+            localiteService.newCommune("Daloa", loc);
+           
+        } catch (NotRequiredLocaliteException ex) {
+            gotExpectedException = true;
+        }
+        
+         Assert.assertTrue("La localité n'est pas un département.",gotExpectedException);
+   
+    }
 }
