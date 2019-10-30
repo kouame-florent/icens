@@ -5,6 +5,7 @@
  */
 package io.icens.registre.repository;
 
+import io.icens.shared.repository.GenericDAOImpl;
 import io.icens.registre.domain.entity.Registre;
 import io.icens.registre.domain.valueobject.ReferenceRegistre;
 import io.icens.registre.domain.valueobject.StatutRegistre;

@@ -5,6 +5,7 @@
  */
 package io.icens.registre.repository;
 
+import io.icens.shared.repository.GenericDAO;
 import io.icens.registre.domain.entity.Mouvement;
 
 /**

@@ -6,8 +6,7 @@
 package io.icens.registre.service.test;
 
 
-import io.icens.registre.domain.entity.BaseEntity;
-import io.icens.registre.domain.entity.Mouvement;
+
 import io.icens.registre.domain.entity.Registre;
 import io.icens.registre.domain.valueobject.ReferenceRegistre;
 import io.icens.registre.domain.valueobject.StatutRegistre;
@@ -15,6 +14,8 @@ import io.icens.registre.domain.valueobject.TypeRegistre;
 import io.icens.registre.exception.RegistreWithStatutsExistException;
 import io.icens.registre.repository.RegistreDAO;
 import io.icens.registre.service.RegistreService;
+import io.icens.shared.interfaces.Identifiable;
+import io.icens.shared.repository.GenericDAO;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
@@ -41,9 +42,10 @@ public class RegistreServiceTest {
     public static WebArchive createDeployment() {
         WebArchive war = ShrinkWrap.create(WebArchive.class,
             RegistreServiceTest.class.getName() + ".war")
-            .addPackages(true, "io.icens.registre.domain.interfaces")
-            .addClasses(Registre.class,BaseEntity.class,Mouvement.class)
-//            .addPackage("io.icens.registre.domain.entity")
+            .addPackage("io.icens.shared.interfaces")
+            .addPackage("io.icens.shared.domain.entity")
+            .addPackage("io.icens.shared.repository")
+            .addPackage("io.icens.registre.domain.entity")
             .addPackage("io.icens.registre.domain.valueobject")
             .addPackage("io.icens.registre.repository")
             .addPackage("io.icens.registre.service")

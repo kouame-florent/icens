@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.registre.domain.interfaces;
+package io.icens.shared.interfaces;
 
 /**
  *
  * @author root
  */
-public interface Identifiable {
-    String getUuid();
+public interface Editable {
+    boolean isEdited();
     
 }

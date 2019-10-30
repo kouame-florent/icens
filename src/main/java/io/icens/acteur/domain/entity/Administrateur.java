@@ -5,6 +5,7 @@
  */
 package io.icens.acteur.domain.entity;
 
+import io.icens.shared.domain.entity.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 

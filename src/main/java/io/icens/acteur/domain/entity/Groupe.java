@@ -5,6 +5,7 @@
  */
 package io.icens.acteur.domain.entity;
 
+import io.icens.shared.domain.entity.BaseEntity;
 import io.icens.acteur.domain.valueobject.StatutGroupe;
 import io.icens.acteur.domain.valueobject.RoleName;
 import javax.persistence.Column;

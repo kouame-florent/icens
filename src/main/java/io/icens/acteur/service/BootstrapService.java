@@ -12,6 +12,6 @@ import javax.ejb.Stateless;
  * @author Florent
  */
 @Stateless
-public class UtilisateurService {
+public class BootstrapService {
     
 }

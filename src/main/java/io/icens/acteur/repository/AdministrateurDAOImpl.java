@@ -6,7 +6,7 @@
 package io.icens.acteur.repository;
 
 import io.icens.acteur.domain.entity.Administrateur;
-import io.icens.registre.repository.GenericDAOImpl;
+import io.icens.shared.repository.GenericDAOImpl;
 import javax.ejb.Stateless;
 
 /**

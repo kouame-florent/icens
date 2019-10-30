@@ -14,6 +14,6 @@ import javax.persistence.Table;
  */
 @Table(name = "IC_REQUERANT")
 @Entity
-public class Requerant extends Utilisateur{
+public class Requerant extends Utilisateur {
     
 }

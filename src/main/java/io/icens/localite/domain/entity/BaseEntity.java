@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.registre.domain.entity;
+package io.icens.localite.domain.entity;
 
-import io.icens.registre.domain.interfaces.Editable;
-import io.icens.registre.domain.interfaces.Identifiable;
-import io.icens.registre.domain.interfaces.Timestampable;
-import io.icens.registre.domain.interfaces.Versionable;
+
+import io.icens.shared.interfaces.Editable;
+import io.icens.shared.interfaces.Identifiable;
+import io.icens.shared.interfaces.Timestampable;
+import io.icens.shared.interfaces.Versionable;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;

@@ -6,6 +6,7 @@
 package io.icens.registre.domain.entity;
 
 import io.icens.registre.domain.valueobject.EtatMouvementRegistre;
+import io.icens.shared.domain.entity.BaseEntity;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;

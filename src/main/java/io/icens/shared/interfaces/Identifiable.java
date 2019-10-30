@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.acteur.repository;
-
-import io.icens.acteur.domain.entity.Groupe;
-import io.icens.shared.repository.GenericDAO;
+package io.icens.shared.interfaces;
 
 /**
  *
  * @author root
  */
-public interface GroupeDAO extends GenericDAO<Groupe, String> {
+public interface Identifiable {
+    String getUuid();
     
 }

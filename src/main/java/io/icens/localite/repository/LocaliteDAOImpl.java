@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.acteur.repository;
+package io.icens.localite.repository;
 
-import io.icens.acteur.domain.entity.Archiviste;
+import io.icens.localite.domain.entity.Localite;
 import io.icens.shared.repository.GenericDAOImpl;
 import javax.ejb.Stateless;
 
@@ -14,10 +14,10 @@ import javax.ejb.Stateless;
  * @author root
  */
 @Stateless
-public class ArchivisteDAOImpl extends GenericDAOImpl<Archiviste, String> implements ArchivisteDAO{
-    
-    public ArchivisteDAOImpl() {
-        super(Archiviste.class);
+public class LocaliteDAOImpl extends GenericDAOImpl<Localite, String> implements LocaliteDAO{
+
+    public LocaliteDAOImpl() {
+        super(Localite.class);
     }
     
 }

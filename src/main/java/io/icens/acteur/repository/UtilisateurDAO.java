@@ -6,6 +6,7 @@
 package io.icens.acteur.repository;
 
 import io.icens.acteur.domain.entity.Utilisateur;
+import io.icens.shared.repository.GenericDAO;
 
 /**
  *

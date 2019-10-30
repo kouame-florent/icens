@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.registre.domain.interfaces;
+package io.icens.shared.interfaces;
+
+import java.time.LocalDateTime;
 
 /**
  *
  * @author root
  */
-public interface Versionable {
-    long getVersion();
+public interface Timestampable {
+    LocalDateTime getCreated();
+    LocalDateTime getUpdated();
 }

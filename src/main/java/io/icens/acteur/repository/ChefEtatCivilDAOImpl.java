@@ -6,6 +6,7 @@
 package io.icens.acteur.repository;
 
 import io.icens.acteur.domain.entity.ChefEtatCivil;
+import io.icens.shared.repository.GenericDAOImpl;
 import javax.ejb.Stateless;
 
 

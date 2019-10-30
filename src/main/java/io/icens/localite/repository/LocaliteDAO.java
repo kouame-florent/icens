@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.registre.domain.interfaces;
+package io.icens.localite.repository;
 
-import java.time.LocalDateTime;
+import io.icens.localite.domain.entity.Localite;
+import io.icens.shared.repository.GenericDAO;
 
 /**
  *
  * @author root
  */
-public interface Timestampable {
-    LocalDateTime getCreated();
-    LocalDateTime getUpdated();
+public interface LocaliteDAO extends GenericDAO<Localite, String> {
+    
 }
