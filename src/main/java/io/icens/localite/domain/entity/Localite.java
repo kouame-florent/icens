@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -33,11 +34,12 @@ public class Localite extends BaseEntity{
     @Column(name = "nom")
     private String nom;
     
+    @Column(name = "type_localite")
     @NotNull
     @Enumerated(EnumType.STRING)
     private TypeLocalite typeLocalite;
         
-    @Column(name = "parent_uuid")
+    @JoinColumn(name = "parent_uuid")
     @ManyToOne
     private Localite parent;
 

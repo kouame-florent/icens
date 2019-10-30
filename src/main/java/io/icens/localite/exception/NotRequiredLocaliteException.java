@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.icens.registre.exception;
+package io.icens.localite.exception;
 
 import javax.ejb.ApplicationException;
 
@@ -12,13 +12,15 @@ import javax.ejb.ApplicationException;
  * @author root
  */
 @ApplicationException(rollback=true)
-public class NotMouvementSortieException extends Exception{
+public class NotRequiredLocaliteException extends Exception{
 
-    public NotMouvementSortieException() {
-        super("Le mouvement n'est pas un mouvement de sortie.");
+    public NotRequiredLocaliteException() {
+        super("La localité n'est pas du bon type.");
     }
-        
-    public NotMouvementSortieException(String message) {
+
+    public NotRequiredLocaliteException(String message) {
         super(message);
     }
+    
+    
 }

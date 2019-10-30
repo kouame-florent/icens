@@ -1,0 +1,13 @@
+IC_LOCALITE:
+  - uuid: 39a7f8b6-9a26-408c-95e9-3755a86844d0
+    code: "[null]"
+    nom: Dépatement de Daloa
+    type_localite": DEPARTEMENT
+    parent_uuid: "[null]"
+    version: 0
+  - uuid: 2700473d-2c44-421a-b366-669c8d14146e 
+    code: "[null]"
+    nom: Daloa
+    type_localite": COMMUNE
+    parent_uuid: 39a7f8b6-9a26-408c-95e9-3755a86844d0
+    version: 0
